@@ -1,0 +1,37 @@
+/** @format */
+
+.main-nav {
+	min-width: 265px;
+	width: 265px;
+	height: 100vh;
+	background-color: rgb(255, 255, 255);
+	border-right: 1px solid lightgray;
+
+	.nav-links {
+		a {
+			color: #535353;
+			text-decoration: none;
+			font-weight: 500;
+			border-radius: 0.5rem;
+			display: flex;
+			align-items: center;
+			font-size: 0.9rem;
+			position: relative;
+
+			&::after {
+				font-family: 'Material Icons Outlined';
+				position: absolute;
+				content: '\e5cc';
+				right: 0;
+			}
+
+			span {
+				margin-right: 16px;
+			}
+
+			&:hover {
+				color: #888888;
+			}
+		}
+	}
+}

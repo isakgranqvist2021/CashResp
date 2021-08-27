@@ -1,0 +1,35 @@
+<!-- @format -->
+
+<nav class="main-nav d-flex flex-column py-3 px-3">
+	<div class="nav-content">
+		<div class="nav-links d-flex flex-column">
+			<a href="/" class="mb-3">
+				<span class="material-icons-outlined">home</span>
+				Home
+			</a>
+			<a href="/offers" class="mb-3">
+				<span class="material-icons-outlined">paid</span>
+				Offers
+			</a>
+			{{ if .User }}
+			<a href="/users/profile" class="mb-3">
+				<span class="material-icons-outlined">account_circle</span>
+				Profile
+			</a>
+			<a href="/users/sign-out" class="mb-3">
+				<span class="material-icons-outlined">logout</span>
+				Sign Out
+			</a>
+			{{ else }}
+			<a href="/auth/sign-in" class="mb-3">
+				<span class="material-icons-outlined">login</span>
+				Sign In
+			</a>
+			<a href="/auth/sign-up" class="mb-3">
+				<span class="material-icons-outlined">app_registration</span>
+				Sign Up
+			</a>
+			{{ end }}
+		</div>
+	</div>
+</nav>

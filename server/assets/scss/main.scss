@@ -1,0 +1,56 @@
+/** @format */
+
+@import './components/nav';
+@import './components/alerts';
+@import './components/form';
+@import './components/toolbar';
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html,
+body {
+	min-width: 100%;
+	min-height: 100%;
+}
+
+body {
+	overflow: hidden;
+	font-family: 'Roboto', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Poppins', sans-serif;
+}
+
+button {
+	font-family: 'Ubuntu', sans-serif;
+}
+
+main {
+	.layout {
+		display: flex;
+		height: 100vh;
+		width: 100%;
+
+		.page {
+			flex-grow: 1;
+			overflow: auto;
+			position: relative;
+		}
+	}
+}
+
+p {
+	line-height: 2;
+}

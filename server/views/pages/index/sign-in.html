@@ -1,0 +1,63 @@
+<!-- @format -->
+
+<section
+	class="
+		w-100
+		min-vh-100
+		d-flex
+		align-items-center
+		justify-content-center
+		bg-img
+	"
+>
+	<section class="p-3 d-flex form-container">
+		<form
+			method="POST"
+			action="/auth/sign-in"
+			class="flex-grow-1 shadow p-5 rounded"
+		>
+			<div class="d-flex social-auth">
+				<a
+					href="/auth/sign-in/auth0"
+					class="p-3 shadow"
+					title="Sign in with facebook"
+				>
+					<img src="/public/svg/facebook.svg" alt="Facebook logo" />
+				</a>
+				<a
+					href="/auth/sign-in/auth0"
+					class="p-3 shadow"
+					title="Sign in with google"
+				>
+					<img src="/public/svg/google.svg" alt="Google logo" />
+				</a>
+			</div>
+			<h3 class="form-title">Sign In</h3>
+			<section class="form-group">
+				<label for="email" class="form-label">Email</label>
+				<input
+					id="email"
+					type="text"
+					name="email"
+					class="form-control"
+				/>
+			</section>
+			<section class="form-group">
+				<label for="password" class="form-label">Password</label>
+				<input
+					id="password"
+					type="password"
+					name="password"
+					class="form-control"
+				/>
+			</section>
+
+			<p class="form-helper-text">
+				Don't have an account? <a href="/auth/sign-up">Sign Up</a>
+			</p>
+
+			<button class="d-block ms-auto" type="submit">Sign In</button>
+		</form>
+		<img class="piggybank" src="/public/svg/piggy_bank.svg" alt="" />
+	</section>
+</section>

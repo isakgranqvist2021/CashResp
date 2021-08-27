@@ -1,0 +1,4 @@
+/server/.env
+/server/store/keys.json
+/.vscode
+/notes.txt 

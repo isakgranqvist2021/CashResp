@@ -1,0 +1,8 @@
+<!-- @format -->
+
+{{ if .Alert }}
+<div class="alert alert-{{ .Alert.Severity }}">
+	<p>{{ .Alert.Message }}</p>
+	<span class="material-icons-outlined">close</span>
+</div>
+{{ end }}

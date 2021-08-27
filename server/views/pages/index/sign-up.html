@@ -1,0 +1,48 @@
+<!-- @format -->
+
+<section
+	class="
+		w-100
+		min-vh-100
+		d-flex
+		align-items-center
+		justify-content-center
+		bg-img
+	"
+>
+	<section class="p-3 d-flex form-container">
+		<form
+			method="POST"
+			action="/auth/sign-up"
+			class="flex-grow-1 shadow p-5 rounded"
+		>
+			<h3 class="form-title">Sign Up</h3>
+
+			<section class="form-group">
+				<label for="email" class="form-label">Email</label>
+				<input
+					id="email"
+					type="text"
+					name="email"
+					class="form-control"
+				/>
+			</section>
+			<section class="form-group">
+				<label for="password" class="form-label">Password</label>
+				<input
+					id="password"
+					type="password"
+					name="password"
+					class="form-control"
+				/>
+			</section>
+
+			<p class="form-helper-text">
+				Already have an account? <a href="/auth/sign-in">Sign In</a>
+			</p>
+
+			<button class="d-block ms-auto" type="submit">Sign Up</button>
+		</form>
+		<img class="piggybank" src="/public/svg/piggy_bank.svg" alt="" />
+	</section>
+</section>
