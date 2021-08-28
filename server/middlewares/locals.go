@@ -1,7 +1,10 @@
 package middlewares
 
 import (
+	"fmt"
+
 	"github.com/gofiber/fiber/v2"
+	"github.com/isakgranqvist2021/surveys/models"
 	"github.com/isakgranqvist2021/surveys/utils"
 )
 
@@ -12,7 +15,27 @@ func SetLocals(c *fiber.Ctx) error {
 		panic(err)
 	}
 
-	c.Locals("User", session.Get("User"))
+	ID := session.Get("User")
+
+	if ID != nil {
+		u := models.User{}
+		if err := u.PopulateFrom(fmt.Sprintf("SELECT * FROM users WHERE ID = '%d'", ID)); err != nil {
+			return c.Redirect("/")
+		}
+
+		data := map[string]interface{}{
+			"ID":        u.ID,
+			"Email":     u.Email,
+			"AuthType":  u.AuthType,
+			"CreatedAt": u.CreatedAt,
+			"UpdatedAt": u.UpdatedAt,
+		}
+
+		c.Locals("User", data)
+	} else {
+		c.Locals("User", nil)
+	}
+
 	c.Locals("Alert", session.Get("Alert"))
 
 	session.Delete("Alert")

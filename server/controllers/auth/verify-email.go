@@ -44,16 +44,7 @@ func PostVerifyEmail(c *fiber.Ctx) error {
 		})
 	}
 
-	payload := map[string]interface{}{
-		"Profile": map[string]interface{}{
-			"ID":       u.ID,
-			"Email":    u.Email,
-			"AuthType": u.AuthType,
-		},
-	}
-
-	session.Set("User", payload)
-
+	session.Set("User", u.ID)
 	if err := session.Save(); err != nil {
 		fmt.Println(err)
 	}

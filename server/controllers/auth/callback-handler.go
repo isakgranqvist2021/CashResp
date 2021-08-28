@@ -3,6 +3,7 @@ package auth
 import (
 	"context"
 	"fmt"
+	"strings"
 
 	"github.com/coreos/go-oidc"
 	"github.com/gofiber/fiber/v2"
@@ -74,8 +75,14 @@ func CallbackHandler(c *fiber.Ctx) error {
 		})
 	}
 
+	AuthType := strings.Split(profile["sub"].(string), "|")[0]
+
+	if strings.Contains(AuthType, "google-oauth2") {
+		AuthType = "google"
+	}
+
 	u := models.User{
-		AuthType:      profile["sub"].(string),
+		AuthType:      AuthType,
 		Email:         profile["nickname"].(string),
 		Password:      utils.RandKey(100, false),
 		EmailVerified: true,
@@ -90,19 +97,14 @@ func CallbackHandler(c *fiber.Ctx) error {
 		})
 	}
 
-	if err != nil && err.Error() == "1" {
-		u.PopulateFrom(fmt.Sprintf("SELECT * FROM users WHERE email = %s", u.Email))
+	if err := u.PopulateFrom(fmt.Sprintf("SELECT * FROM users WHERE Email = '%s'", u.Email)); err != nil {
+		return controllers.RedirectWithAlert(c, "/auth/sign-in", utils.Alert{
+			Severity: "error",
+			Message:  "internal server error",
+		})
 	}
 
-	payload := map[string]interface{}{
-		"Profile": map[string]interface{}{
-			"ID":       u.ID,
-			"Email":    u.Email,
-			"AuthType": u.AuthType,
-		},
-	}
-
-	session.Set("User", payload)
+	session.Set("User", u.ID)
 	if err = session.Save(); err != nil {
 		return controllers.RedirectWithAlert(c, "/auth/sign-in", utils.Alert{
 			Severity: "error",
@@ -110,7 +112,7 @@ func CallbackHandler(c *fiber.Ctx) error {
 		})
 	}
 
-	fmt.Println("----------- new sign in -----------")
+	fmt.Println("-------- new sign in --------")
 	fmt.Printf("%d | %s | %s \n", u.ID, u.Email, u.AuthType)
 
 	return controllers.RedirectWithAlert(c, "/users/profile", utils.Alert{

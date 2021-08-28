@@ -31,7 +31,7 @@ func (u *User) Login() error {
 
 	var pw string
 	if err := row.Scan(&pw); err != nil {
-		return errors.New("scanning row failed")
+		return errors.New("account not found")
 	}
 
 	if err := bcrypt.CompareHashAndPassword([]byte(pw), []byte(u.Password)); err != nil {
@@ -69,9 +69,9 @@ func (u *User) Register() error {
 	}
 
 	query := fmt.Sprintf(`
-		INSERT INTO users (Email, Password, AuthType, EmailVerified) 
-		VALUES('%s', '%s', '%s', '%d')`,
-		u.Email, string(bytes), u.AuthType, val)
+		INSERT INTO users (Email, Password, AuthType, VerifyCode, EmailVerified) 
+		VALUES('%s', '%s', '%s', '%s' ,'%d')`,
+		u.Email, string(bytes), u.AuthType, "", val)
 
 	_, err = db.Exec(query)
 
@@ -133,6 +133,7 @@ func (u *User) PopulateFrom(query string) error {
 		&u.CreatedAt,
 		&u.UpdatedAt,
 		&u.EmailVerified); err != nil {
+		fmt.Println(err)
 		return errors.New("error while scanning user")
 	}
 
