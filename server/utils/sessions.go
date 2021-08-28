@@ -59,6 +59,4 @@ func SessionActive(c *fiber.Ctx) bool {
 	} else {
 		return false
 	}
-
-	return false
 }

@@ -29,11 +29,11 @@ func main() {
 	})
 
 	app.Static("/public", "./public")
-
 	app.Use("*", middlewares.SetLocals)
 
 	routers.Index(app.Group("/"))
 	routers.Users(app.Group("/users", middlewares.LoggedIn))
+	routers.Earn(app.Group("/earn", middlewares.LoggedIn))
 	routers.Auth(app.Group("/auth", middlewares.LoggedOut))
 
 	log.Fatal(app.Listen(":8080"))

@@ -12,11 +12,12 @@ import (
 )
 
 func GetSignUp(c *fiber.Ctx) error {
-	return c.Render("pages/index/sign-up", fiber.Map{
-		"Title": "Sign Up",
-		"User":  c.Locals("User"),
-		"Alert": c.Locals("Alert"),
-		"Data":  nil,
+	return c.Render("pages/auth/sign-up", fiber.Map{
+		"Title":       "Sign Up",
+		"User":        c.Locals("User"),
+		"Alert":       c.Locals("Alert"),
+		"Stylesheets": []string{"auth.min.css"},
+		"Data":        nil,
 	})
 }
 
@@ -26,7 +27,6 @@ func PostSignUp(c *fiber.Ctx) error {
 		VerifyCode: utils.RandKey(25, false),
 	}
 
-	// read .env file in root directory
 	if err := godotenv.Load(); err != nil {
 		panic(err)
 	}

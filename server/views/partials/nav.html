@@ -3,14 +3,37 @@
 <nav class="main-nav d-flex flex-column">
 	<div class="nav-content">
 		<div class="nav-links d-flex flex-column">
-			<a href="/" class="mb-3">
-				<span class="material-icons-outlined">home</span>
-				Home
+			<h3>Earn</h3>
+			<a href="/earn/surveys" class="mb-3">
+				<span class="material-icons-outlined">emoji_emotions</span>
+				Surveys
 			</a>
-			<a href="/offers" class="mb-3">
+			<a href="/earn/watch" class="mb-3">
+				<span class="material-icons-outlined">play_circle_outline</span>
+				Watch & Earn
+			</a>
+			<a href="/earn/offers" class="mb-3">
 				<span class="material-icons-outlined">paid</span>
 				Offers
 			</a>
+		</div>
+		<div class="nav-links d-flex flex-column">
+			<h3>Help</h3>
+			<a href="/customer-support" class="mb-3">
+				<span class="material-icons-outlined">support_agent</span>
+				Customer Support
+			</a>
+			<a href="/your-privacy" class="mb-3">
+				<span class="material-icons-outlined">vpn_lock</span>
+				Privacy Policy
+			</a>
+			<a href="/terms-of-service" class="mb-3">
+				<span class="material-icons-outlined">gavel</span>
+				Terms Of Service
+			</a>
+		</div>
+		<div class="nav-links d-flex flex-column">
+			<h3>Account</h3>
 			{{ if .User }}
 			<a href="/users/profile" class="mb-3">
 				<span class="material-icons-outlined">account_circle</span>
@@ -30,20 +53,6 @@
 				Sign Up
 			</a>
 			{{ end }}
-		</div>
-		<div class="nav-links d-flex flex-column">
-			<a href="/customer-support" class="mb-3">
-				<span class="material-icons-outlined">support_agent</span>
-				Customer Support
-			</a>
-			<a href="/your-privacy" class="mb-3">
-				<span class="material-icons-outlined">vpn_lock</span>
-				Privacy Policy
-			</a>
-			<a href="/terms-of-service" class="mb-3">
-				<span class="material-icons-outlined">gavel</span>
-				Terms Of Service
-			</a>
 		</div>
 	</div>
 </nav>
