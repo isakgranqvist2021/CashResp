@@ -6,8 +6,15 @@
 	height: 100vh;
 	background-color: rgb(255, 255, 255);
 	border-right: 1px solid lightgray;
+	padding: 1rem 0;
 
 	.nav-links {
+		padding: 1rem;
+
+		&:not(:last-of-type) {
+			border-bottom: 1px solid lightgray;
+		}
+
 		a {
 			color: #535353;
 			text-decoration: none;
@@ -15,7 +22,7 @@
 			border-radius: 0.5rem;
 			display: flex;
 			align-items: center;
-			font-size: 0.9rem;
+			font-size: 0.78rem;
 			position: relative;
 
 			&::after {

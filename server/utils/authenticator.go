@@ -21,7 +21,6 @@ func NewAuthenticator() (*Authenticator, error) {
 	if err != nil {
 		return nil, err
 	}
-
 	keys, err := GetKeys()
 
 	if err != nil {
@@ -29,8 +28,8 @@ func NewAuthenticator() (*Authenticator, error) {
 	}
 
 	conf := oauth2.Config{
-		ClientID:     keys["0auth"]["client_id"],
-		ClientSecret: keys["0auth"]["client_secret"],
+		ClientID:     keys["oauth2"]["client_id"],
+		ClientSecret: keys["oauth2"]["client_secret"],
 		RedirectURL:  "http://localhost:8080/auth/callback",
 		Endpoint:     provider.Endpoint(),
 		Scopes:       []string{oidc.ScopeOpenID, "profile"},

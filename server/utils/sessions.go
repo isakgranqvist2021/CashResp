@@ -4,6 +4,7 @@ import (
 	"os"
 	"time"
 
+	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/session"
 	"github.com/gofiber/storage/mysql"
 	"github.com/joho/godotenv"
@@ -44,4 +45,20 @@ func CreateStore() {
 
 func GetStore() *session.Store {
 	return Store
+}
+
+func SessionActive(c *fiber.Ctx) bool {
+	session, err := Store.Get(c)
+
+	if err != nil {
+		return false
+	}
+
+	if session.Get("User") != nil {
+		return true
+	} else {
+		return false
+	}
+
+	return false
 }
