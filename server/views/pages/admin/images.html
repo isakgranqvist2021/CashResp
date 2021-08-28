@@ -4,32 +4,53 @@
 	<h1>Images</h1>
 	<form
 		id="upload-img"
-		class="pt-3 d-flex align-items-center"
 		enctype="multipart/form-data"
 		method="POST"
 		action="/admin/images"
 	>
 		<section class="form-group me-3">
-			<label for="alt" class="form-label me-2">Alt Text</label>
+			<label for="alt" class="form-label">Alt Text</label>
 			<input type="text" name="alt" id="alt" />
 		</section>
-		<input
-			onchange="document.querySelector('#upload-img').submit()"
-			class="ms-2"
-			type="file"
-			name="image"
-			id="image"
-			accept="image/png,image/jpeg"
-		/>
+		<section class="form-group">
+			<input
+				onchange="document.querySelector('#upload-img').submit()"
+				type="file"
+				name="image"
+				id="image"
+				accept="image/png,image/jpeg"
+			/>
+		</section>
 	</form>
 
-	<div class="d-flex flex-wrap images py-5">
-		{{ range .Data.Images }}
-		<img
-			src="/uploads/{{ .Filename }}"
-			alt="{{ .Alt }}"
-			class="flex-grow-1"
-		/>
-		{{ end }}
+	<div class="py-5">
+		<table>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Filename</th>
+					<th>Original Filename</th>
+					<th>Type</th>
+					<th>Alt</th>
+					<th>Created At</th>
+					<th>Updated At</th>
+					<th>Size</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{ range .Data.Images }}
+				<tr>
+					<td>{{ .ID }}</td>
+					<td>{{ .Filename }}</td>
+					<td>{{ .OriginalFilename }}</td>
+					<td>{{ .Type }}</td>
+					<td>{{ .Alt }}</td>
+					<td>{{ .CreatedAt }}</td>
+					<td>{{ .UpdatedAt }}</td>
+					<td>{{ .Size }}</td>
+				</tr>
+				{{ end }}
+			</tbody>
+		</table>
 	</div>
 </div>

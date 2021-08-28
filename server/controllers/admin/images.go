@@ -5,6 +5,7 @@ import (
 	"path/filepath"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/isakgranqvist2021/surveys/controllers"
 	"github.com/isakgranqvist2021/surveys/models"
 	"github.com/isakgranqvist2021/surveys/utils"
 )
@@ -49,6 +50,13 @@ func PostImages(c *fiber.Ctx) error {
 
 	if err := c.BodyParser(&image); err != nil {
 		return c.Redirect(c.OriginalURL())
+	}
+
+	if !utils.LongEnough(image.Alt, 1, 45) {
+		return controllers.RedirectWithAlert(c, "/admin/images", utils.Alert{
+			Severity: "error",
+			Message:  "please enter an alt text",
+		})
 	}
 
 	if err := image.SaveImage(); err != nil {
