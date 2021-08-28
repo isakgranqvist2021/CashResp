@@ -7,13 +7,48 @@ import (
 )
 
 type Image struct {
+	ID               int
 	Filename         string
 	OriginalFilename string
 	Type             string
 	Alt              string
-	Size             int64
 	CreatedAt        string
 	UpdatedAt        string
+	Size             int64
+}
+
+func GetImages() ([]Image, error) {
+	db := utils.Connect()
+	defer db.Close()
+
+	query := "SELECT * FROM images"
+
+	rows, err := db.Query(query)
+
+	if err != nil {
+		return nil, err
+	}
+
+	var images []Image
+	for rows.Next() {
+		var image Image
+		if err := rows.Scan(
+			&image.ID,
+			&image.Filename,
+			&image.OriginalFilename,
+			&image.Type,
+			&image.Alt,
+			&image.CreatedAt,
+			&image.UpdatedAt,
+			&image.Size,
+		); err != nil {
+			fmt.Println(err)
+		} else {
+			images = append(images, image)
+		}
+	}
+
+	return images, nil
 }
 
 func (i *Image) SaveImage() error {

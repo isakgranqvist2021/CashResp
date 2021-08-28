@@ -10,11 +10,20 @@ import (
 )
 
 func GetImages(c *fiber.Ctx) error {
+	images, err := models.GetImages()
+
+	if err != nil {
+		images = []models.Image{}
+	}
+
 	return c.Render("pages/admin/images", fiber.Map{
-		"Title": "Images",
-		"User":  c.Locals("User"),
-		"Alert": c.Locals("Alert"),
-		"Data":  nil,
+		"Title":       "Images",
+		"User":        c.Locals("User"),
+		"Alert":       c.Locals("Alert"),
+		"Stylesheets": []string{"images.min.css"},
+		"Data": map[string]interface{}{
+			"Images": images,
+		},
 	})
 }
 

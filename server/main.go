@@ -29,6 +29,7 @@ func main() {
 	})
 
 	app.Static("/public", "./public")
+	app.Static("/uploads", "./uploads")
 	app.Use("*", middlewares.SetLocals)
 
 	routers.Index(app.Group("/"))

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AACC,OADM,CACN,GAAG,AAAC,CACH,SAAS,CAAE,IAAI,CACf,UAAU,CAAE,KAAK,CACjB,OAAO,CAAE,KAAK,CACd",
+    "sources": [
+        "../../assets/scss/pages/images.scss"
+    ],
+    "names": [],
+    "file": "images.min.css"
+}

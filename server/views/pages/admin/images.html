@@ -3,25 +3,33 @@
 <div class="p-5">
 	<h1>Images</h1>
 	<form
-		class="pt-3 d-flex flex-column"
+		id="upload-img"
+		class="pt-3 d-flex align-items-center"
 		enctype="multipart/form-data"
 		method="POST"
 		action="/admin/images"
 	>
-		<section class="form-group mb-3">
+		<section class="form-group me-3">
 			<label for="alt" class="form-label me-2">Alt Text</label>
 			<input type="text" name="alt" id="alt" />
 		</section>
-		<label for="image" class="form-label mb-3">
-			File
-			<input
-				class="ms-2"
-				type="file"
-				name="image"
-				id="image"
-				accept="image/png,image/jpeg"
-			/>
-		</label>
-		<button type="submit" class="d-block me-auto p-1">Upload</button>
+		<input
+			onchange="document.querySelector('#upload-img').submit()"
+			class="ms-2"
+			type="file"
+			name="image"
+			id="image"
+			accept="image/png,image/jpeg"
+		/>
 	</form>
+
+	<div class="d-flex flex-wrap images py-5">
+		{{ range .Data.Images }}
+		<img
+			src="/uploads/{{ .Filename }}"
+			alt="{{ .Alt }}"
+			class="flex-grow-1"
+		/>
+		{{ end }}
+	</div>
 </div>
