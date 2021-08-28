@@ -7,6 +7,9 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	position: fixed;
+	top: 0;
+	left: 0;
 
 	&::before {
 		height: 50px;
@@ -23,6 +26,7 @@
 		box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 		border-radius: 50%;
 		font-family: 'Material Icons Outlined';
+		z-index: 3;
 	}
 
 	&.alert-error {

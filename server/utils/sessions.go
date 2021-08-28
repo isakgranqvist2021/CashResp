@@ -40,7 +40,10 @@ func CreateStore() {
 	})
 
 	var data map[string]interface{}
+	var alert Alert
+
 	Store.RegisterType(data)
+	Store.RegisterType(alert)
 }
 
 func GetStore() *session.Store {

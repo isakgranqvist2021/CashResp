@@ -10,6 +10,7 @@ import (
 )
 
 func GetSignIn(c *fiber.Ctx) error {
+	fmt.Println(c.Locals("Alert"))
 	return c.Render("pages/auth/sign-in", fiber.Map{
 		"Title":       "Sign In",
 		"User":        c.Locals("User"),
@@ -60,10 +61,10 @@ func PostSignIn(c *fiber.Ctx) error {
 
 	payload := map[string]interface{}{
 		"Profile": map[string]interface{}{
+			"ID":       u.ID,
 			"Email":    u.Email,
 			"AuthType": u.AuthType,
 		},
-		"AccessToken": u.ID,
 	}
 
 	session.Set("User", payload)
@@ -71,6 +72,9 @@ func PostSignIn(c *fiber.Ctx) error {
 	if err := session.Save(); err != nil {
 		fmt.Println(err)
 	}
+
+	fmt.Println("----------- new sign in -----------")
+	fmt.Printf("%d | %s | %s \n", u.ID, u.Email, u.AuthType)
 
 	return controllers.RedirectWithAlert(c, "/users/profile", utils.Alert{
 		Severity: "success",

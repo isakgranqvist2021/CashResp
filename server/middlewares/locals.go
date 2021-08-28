@@ -16,7 +16,6 @@ func SetLocals(c *fiber.Ctx) error {
 	c.Locals("Alert", session.Get("Alert"))
 
 	session.Delete("Alert")
-
 	if err := session.Save(); err != nil {
 		panic(err)
 	}

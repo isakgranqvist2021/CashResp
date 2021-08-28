@@ -15,7 +15,6 @@ type Mail struct {
 }
 
 func SendMail(m *Mail) {
-	// read .env file in root directory
 	if err := godotenv.Load(); err != nil {
 		panic(err)
 	}
@@ -34,7 +33,6 @@ func SendMail(m *Mail) {
 
 	if err := d.DialAndSend(mail); err != nil {
 		fmt.Println(err)
-		panic(err)
 	}
 
 	return

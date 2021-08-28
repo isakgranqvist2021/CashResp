@@ -7,6 +7,5 @@ import (
 
 func Users(r fiber.Router) {
 	r.Get("/profile", users.GetProfile)
-	r.Get("/conversion", users.GetConversion)
 	r.Get("/sign-out", users.GetSignOut)
 }

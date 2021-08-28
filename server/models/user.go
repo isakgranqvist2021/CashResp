@@ -3,6 +3,7 @@ package models
 import (
 	"errors"
 	"fmt"
+	"os"
 	"time"
 
 	"github.com/go-sql-driver/mysql"
@@ -29,7 +30,6 @@ func (u *User) Login() error {
 	row := db.QueryRow(query)
 
 	var pw string
-
 	if err := row.Scan(&pw); err != nil {
 		return errors.New("scanning row failed")
 	}
@@ -43,6 +43,10 @@ func (u *User) Login() error {
 	}
 
 	if !u.EmailVerified {
+		if err := u.SetVerifyEmailAndSend(); err != nil {
+			return err
+		}
+
 		return errors.New("email has not been verified")
 	}
 
@@ -59,10 +63,15 @@ func (u *User) Register() error {
 		return errors.New("could not hash password")
 	}
 
+	val := 0
+	if u.EmailVerified {
+		val = 1
+	}
+
 	query := fmt.Sprintf(`
-		INSERT INTO users (Email, Password, AuthType, VerifyCode) 
-		VALUES('%s', '%s', '%s', '%s')`,
-		u.Email, string(bytes), u.AuthType, u.VerifyCode)
+		INSERT INTO users (Email, Password, AuthType, EmailVerified) 
+		VALUES('%s', '%s', '%s', '%d')`,
+		u.Email, string(bytes), u.AuthType, val)
 
 	_, err = db.Exec(query)
 
@@ -75,12 +84,12 @@ func (u *User) Register() error {
 
 		switch me.Number {
 		case 1062:
-			return errors.New("email already in use.")
+			return errors.New("1")
 		case 1146:
 			return errors.New("internal server error")
 		}
 
-		return errors.New("internal server error")
+		return err
 	}
 
 	return nil
@@ -130,7 +139,24 @@ func (u *User) PopulateFrom(query string) error {
 	return nil
 }
 
-// email exists on struct -> populate full struct
-// func (u *User) PopulateFromEmail() error {
+func (u *User) SetVerifyEmailAndSend() error {
+	u.VerifyCode = utils.RandKey(25, false)
+	db := utils.Connect()
+	defer db.Close()
 
-// }
+	_, err := db.Exec(fmt.Sprintf("UPDATE users SET VerifyCode = '%s' WHERE Email = '%s'", u.VerifyCode, u.Email))
+
+	if err != nil {
+		return err
+	}
+
+	verifyAddr := os.Getenv("SERVER_ADDR") + "/auth/verify-email/" + u.VerifyCode
+	message := fmt.Sprintf("Click here to verify your email <a href='%s'>Verify Email</a>", verifyAddr)
+
+	utils.SendMail(&utils.Mail{
+		Receivers: []string{u.Email},
+		Message:   message,
+	})
+
+	return nil
+}

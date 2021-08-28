@@ -7,6 +7,7 @@ import (
 	"github.com/coreos/go-oidc"
 	"github.com/gofiber/fiber/v2"
 	"github.com/isakgranqvist2021/surveys/controllers"
+	"github.com/isakgranqvist2021/surveys/models"
 	"github.com/isakgranqvist2021/surveys/utils"
 )
 
@@ -73,12 +74,32 @@ func CallbackHandler(c *fiber.Ctx) error {
 		})
 	}
 
+	u := models.User{
+		AuthType:      profile["sub"].(string),
+		Email:         profile["nickname"].(string),
+		Password:      utils.RandKey(100, false),
+		EmailVerified: true,
+	}
+
+	err = u.Register()
+
+	if err != nil && err.Error() != "1" {
+		return controllers.RedirectWithAlert(c, "/auth/sign-in", utils.Alert{
+			Severity: "error",
+			Message:  "internal server error",
+		})
+	}
+
+	if err != nil && err.Error() == "1" {
+		u.PopulateFrom(fmt.Sprintf("SELECT * FROM users WHERE email = %s", u.Email))
+	}
+
 	payload := map[string]interface{}{
 		"Profile": map[string]interface{}{
-			"AuthType": profile["sub"].(string),
-			"Email":    profile["nickname"].(string),
+			"ID":       u.ID,
+			"Email":    u.Email,
+			"AuthType": u.AuthType,
 		},
-		"AccessToken": token.AccessToken,
 	}
 
 	session.Set("User", payload)
@@ -90,9 +111,10 @@ func CallbackHandler(c *fiber.Ctx) error {
 	}
 
 	fmt.Println("----------- new sign in -----------")
-	for k, v := range profile {
-		fmt.Printf("%s -> %s\n", k, v)
-	}
+	fmt.Printf("%d | %s | %s \n", u.ID, u.Email, u.AuthType)
 
-	return c.Redirect("/auth/sign-in")
+	return controllers.RedirectWithAlert(c, "/users/profile", utils.Alert{
+		Severity: "success",
+		Message:  "sign in successful",
+	})
 }

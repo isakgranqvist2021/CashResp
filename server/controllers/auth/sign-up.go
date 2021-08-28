@@ -2,7 +2,6 @@ package auth
 
 import (
 	"fmt"
-	"os"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/isakgranqvist2021/surveys/controllers"
@@ -23,8 +22,8 @@ func GetSignUp(c *fiber.Ctx) error {
 
 func PostSignUp(c *fiber.Ctx) error {
 	u := models.User{
-		AuthType:   "form",
-		VerifyCode: utils.RandKey(25, false),
+		AuthType:      "form",
+		EmailVerified: false,
 	}
 
 	if err := godotenv.Load(); err != nil {
@@ -59,13 +58,12 @@ func PostSignUp(c *fiber.Ctx) error {
 		})
 	}
 
-	verifyAddr := os.Getenv("SERVER_ADDR") + "/auth/verify-email/" + u.VerifyCode
-	message := fmt.Sprintf("Click here to verify your email <a href='%s'>Verify Email</a>", verifyAddr)
-
-	utils.SendMail(&utils.Mail{
-		Receivers: []string{u.Email},
-		Message:   message,
-	})
+	if err := u.SetVerifyEmailAndSend(); err != nil {
+		return controllers.RedirectWithAlert(c, c.OriginalURL(), utils.Alert{
+			Severity: "error",
+			Message:  "mail could not be sent",
+		})
+	}
 
 	return controllers.RedirectWithAlert(c, "/", utils.Alert{
 		Severity: "success",

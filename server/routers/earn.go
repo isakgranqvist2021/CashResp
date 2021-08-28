@@ -9,4 +9,6 @@ func Earn(r fiber.Router) {
 	r.Get("/surveys", earn.GetSurveys)
 	r.Get("/offers", earn.GetOffers)
 	r.Get("/watch", earn.GetVideos)
+	r.Get("/conversion", earn.GetConversion)
+	r.Get("/my-earnings", earn.GetEarnings)
 }
