@@ -35,6 +35,7 @@ func main() {
 	routers.Users(app.Group("/users", middlewares.LoggedIn))
 	routers.Earn(app.Group("/earn", middlewares.LoggedIn))
 	routers.Auth(app.Group("/auth", middlewares.LoggedOut))
+	routers.Admin(app.Group("/admin", middlewares.IsAdmin))
 
 	log.Fatal(app.Listen(":8080"))
 }

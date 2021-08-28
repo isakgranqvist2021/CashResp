@@ -20,6 +20,7 @@ type User struct {
 	CreatedAt     string
 	UpdatedAt     string
 	EmailVerified bool
+	Admin         bool
 }
 
 func (u *User) Login() error {
@@ -132,7 +133,8 @@ func (u *User) PopulateFrom(query string) error {
 		&u.VerifyCode,
 		&u.CreatedAt,
 		&u.UpdatedAt,
-		&u.EmailVerified); err != nil {
+		&u.EmailVerified,
+		&u.Admin); err != nil {
 		fmt.Println(err)
 		return errors.New("error while scanning user")
 	}

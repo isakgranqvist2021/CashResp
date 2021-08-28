@@ -17,7 +17,7 @@
 		<div class="nav-links d-flex flex-column">
 			<h3>Account</h3>
 			{{ if .User }}
-			<a href="/users/profile"> Profile </a>
+			<a href="/users/profile"> My Profile </a>
 			<a href="/users/my-earnings">My Earnings</a>
 			<a href="/users/withdrawal">Withdrawal</a>
 			<a href="/users/sign-out"> Sign Out </a>
@@ -26,5 +26,12 @@
 			<a href="/auth/sign-up"> Sign Up </a>
 			{{ end }}
 		</div>
+
+		{{ if .User }} {{ if .User.Admin }}
+		<div class="nav-links d-flex flex-column">
+			<h3>Admin</h3>
+			<a href="/admin/images">Images</a>
+		</div>
+		{{ end }} {{ end }}
 	</div>
 </nav>

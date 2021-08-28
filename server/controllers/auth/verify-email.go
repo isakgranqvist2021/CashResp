@@ -44,13 +44,9 @@ func PostVerifyEmail(c *fiber.Ctx) error {
 		})
 	}
 
-	session.Set("User", u.ID)
-	if err := session.Save(); err != nil {
-		fmt.Println(err)
-	}
-
-	return controllers.RedirectWithAlert(c, "/", utils.Alert{
-		Severity: "success",
-		Message:  "your email has been verified",
+	return controllers.CreateSession(&controllers.NewLogin{
+		Ctx:     c,
+		Session: session,
+		User:    &u,
 	})
 }

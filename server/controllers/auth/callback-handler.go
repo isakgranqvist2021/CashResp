@@ -104,19 +104,9 @@ func CallbackHandler(c *fiber.Ctx) error {
 		})
 	}
 
-	session.Set("User", u.ID)
-	if err = session.Save(); err != nil {
-		return controllers.RedirectWithAlert(c, "/auth/sign-in", utils.Alert{
-			Severity: "error",
-			Message:  err.Error(),
-		})
-	}
-
-	fmt.Println("-------- new sign in --------")
-	fmt.Printf("%d | %s | %s \n", u.ID, u.Email, u.AuthType)
-
-	return controllers.RedirectWithAlert(c, "/users/profile", utils.Alert{
-		Severity: "success",
-		Message:  "sign in successful",
+	return controllers.CreateSession(&controllers.NewLogin{
+		Ctx:     c,
+		Session: session,
+		User:    &u,
 	})
 }

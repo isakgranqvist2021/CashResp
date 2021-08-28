@@ -29,6 +29,7 @@ func SetLocals(c *fiber.Ctx) error {
 			"AuthType":  u.AuthType,
 			"CreatedAt": u.CreatedAt,
 			"UpdatedAt": u.UpdatedAt,
+			"Admin":     u.Admin,
 		}
 
 		c.Locals("User", data)

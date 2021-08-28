@@ -1,8 +1,6 @@
 package auth
 
 import (
-	"fmt"
-
 	"github.com/gofiber/fiber/v2"
 	"github.com/isakgranqvist2021/surveys/controllers"
 	"github.com/isakgranqvist2021/surveys/models"
@@ -58,16 +56,9 @@ func PostSignIn(c *fiber.Ctx) error {
 		})
 	}
 
-	session.Set("User", u.ID)
-	if err := session.Save(); err != nil {
-		fmt.Println(err)
-	}
-
-	fmt.Println("-------- new sign in --------")
-	fmt.Printf("%d | %s | %s \n", u.ID, u.Email, u.AuthType)
-
-	return controllers.RedirectWithAlert(c, "/users/profile", utils.Alert{
-		Severity: "success",
-		Message:  "sign in successful",
+	return controllers.CreateSession(&controllers.NewLogin{
+		Ctx:     c,
+		Session: session,
+		User:    &u,
 	})
 }
