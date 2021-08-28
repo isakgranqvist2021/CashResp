@@ -4,54 +4,24 @@
 	<div class="nav-content">
 		<div class="nav-links d-flex flex-column">
 			<h3>Earn</h3>
-			<a href="/earn/surveys" class="mb-3">
-				<span class="material-icons-outlined">emoji_emotions</span>
-				Surveys
-			</a>
-			<a href="/earn/watch" class="mb-3">
-				<span class="material-icons-outlined">play_circle_outline</span>
-				Watch & Earn
-			</a>
-			<a href="/earn/offers" class="mb-3">
-				<span class="material-icons-outlined">paid</span>
-				Offers
-			</a>
+			<a href="/earn/surveys"> Surveys </a>
+			<a href="/earn/watch"> Watch & Earn </a>
+			<a href="/earn/offers"> Offers </a>
 		</div>
 		<div class="nav-links d-flex flex-column">
 			<h3>Help</h3>
-			<a href="/customer-support" class="mb-3">
-				<span class="material-icons-outlined">support_agent</span>
-				Customer Support
-			</a>
-			<a href="/your-privacy" class="mb-3">
-				<span class="material-icons-outlined">vpn_lock</span>
-				Privacy Policy
-			</a>
-			<a href="/terms-of-service" class="mb-3">
-				<span class="material-icons-outlined">gavel</span>
-				Terms Of Service
-			</a>
+			<a href="/customer-support"> Customer Support </a>
+			<a href="/your-privacy"> Privacy Policy </a>
+			<a href="/terms-of-service"> Terms Of Service </a>
 		</div>
 		<div class="nav-links d-flex flex-column">
 			<h3>Account</h3>
 			{{ if .User }}
-			<a href="/users/profile" class="mb-3">
-				<span class="material-icons-outlined">account_circle</span>
-				Profile
-			</a>
-			<a href="/users/sign-out" class="mb-3">
-				<span class="material-icons-outlined">logout</span>
-				Sign Out
-			</a>
+			<a href="/users/profile"> Profile </a>
+			<a href="/users/sign-out"> Sign Out </a>
 			{{ else }}
-			<a href="/auth/sign-in" class="mb-3">
-				<span class="material-icons-outlined">login</span>
-				Sign In
-			</a>
-			<a href="/auth/sign-up" class="mb-3">
-				<span class="material-icons-outlined">app_registration</span>
-				Sign Up
-			</a>
+			<a href="/auth/sign-in"> Sign In </a>
+			<a href="/auth/sign-up"> Sign Up </a>
 			{{ end }}
 		</div>
 	</div>

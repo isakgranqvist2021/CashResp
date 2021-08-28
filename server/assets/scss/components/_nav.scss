@@ -5,39 +5,43 @@
 	width: 265px;
 	height: 100vh;
 	background-color: rgb(255, 255, 255);
-	border-right: 1px solid lightgray;
-	padding: 1rem 0;
+	border-right: 1px solid rgb(230, 230, 230);
 
 	.nav-links {
 		padding: 1rem;
 
 		h3 {
-			margin-bottom: 1rem;
-			margin-left: 3px;
 			font-weight: 400;
 			text-transform: uppercase;
 			font-size: 1.2rem;
+			margin-bottom: 0.66rem;
 		}
 
 		&:not(:last-of-type) {
-			border-bottom: 1px solid lightgray;
+			border-bottom: 1px solid rgb(230, 230, 230);
 		}
 
 		a {
 			color: #535353;
 			text-decoration: none;
 			font-weight: 500;
-			border-radius: 0.5rem;
 			display: flex;
 			align-items: center;
 			font-size: 0.78rem;
 			position: relative;
+			border: 1px solid rgb(226, 226, 226);
+			padding: 0.6rem;
+			border-radius: 0.8rem;
+
+			&:not(:last-of-type) {
+				margin-bottom: 1rem;
+			}
 
 			&::after {
 				font-family: 'Material Icons Outlined';
 				position: absolute;
 				content: '\e5cc';
-				right: 0;
+				right: 1rem;
 			}
 
 			span {
@@ -45,7 +49,7 @@
 			}
 
 			&:hover {
-				color: #888888;
+				color: #1870b8;
 			}
 		}
 	}

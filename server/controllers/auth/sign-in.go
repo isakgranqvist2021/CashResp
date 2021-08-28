@@ -10,7 +10,6 @@ import (
 )
 
 func GetSignIn(c *fiber.Ctx) error {
-	fmt.Println(c.Locals("Alert"))
 	return c.Render("pages/auth/sign-in", fiber.Map{
 		"Title":       "Sign In",
 		"User":        c.Locals("User"),
