@@ -43,6 +43,7 @@ func CreateTablesIfNotExists() {
 			UpdatedAt datetime DEFAULT CURRENT_TIMESTAMP,
 			Href varchar(45) NOT NULL,
 			ImageID int NOT NULL,
+			Draft TINYINT NOT NULL DEFAULT 0,
 			Provider varchar(45) NOT NULL,
 			PRIMARY KEY (ID),
 			UNIQUE KEY ID_UNIQUE (ID),

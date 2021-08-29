@@ -1,5 +1,11 @@
 package models
 
+import (
+	"fmt"
+
+	"github.com/isakgranqvist2021/surveys/utils"
+)
+
 type Offer struct {
 	ID          int
 	OfferID     string
@@ -10,6 +16,7 @@ type Offer struct {
 	UpdatedAt   string
 	Href        string
 	ImageID     int
+	Draft       bool
 	Provider    string
 }
 
@@ -22,6 +29,21 @@ type Offer struct {
 */
 
 func (o *Offer) CreateNew() error {
+	db := utils.Connect()
+	defer db.Close()
 
-	return nil
+	draft := 0
+	if o.Draft {
+		draft = 1
+	}
+
+	query := fmt.Sprintf(`
+		INSERT INTO offers (OfferID, PublisherID, AppID, Description, Href, ImageID, Provider, Draft)
+		VALUES ('%s', '%s', '%s', '%s', '%s', '%d', '%s', '%v')`,
+		o.OfferID, o.PublisherID, o.AppID, o.Description, o.Href, o.ImageID, o.Provider, draft,
+	)
+
+	_, err := db.Exec(query)
+
+	return err
 }

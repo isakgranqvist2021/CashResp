@@ -6,6 +6,15 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="description"
+			content="Earn cash and share your opinion. Join the Cashresp community."
+		/>
+		<link
+			rel="shortcut icon"
+			href="/public/favicon.ico"
+			type="image/x-icon"
+		/>
 		<link
 			rel="stylesheet"
 			href="https://cdn.jsdelivr.net/npm/uikit@3.7.2/dist/css/uikit.min.css"
@@ -13,7 +22,7 @@
 		{{ if .Stylesheets }} {{ range .Stylesheets }}
 		<link rel="stylesheet" href="/public/css/{{ . }}" />
 		{{ end }} {{ end }}
-		<title>Cashresp | {{ .Title }}</title>
+		<title>Cashresp - {{ .Title }}</title>
 	</head>
 	<body>
 		{{ template "partials/nav" . }} {{ template "partials/alerts" . }}
