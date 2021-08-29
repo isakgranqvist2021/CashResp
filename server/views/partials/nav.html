@@ -5,98 +5,112 @@
 	class="uk-navbar-container tm-navbar-container uk-sticky"
 	uk-navbar
 >
-	<div class="uk-navbar-container uk-container-expand uk-width-100">
-		<nav class="uk-navbar">
-			<div class="uk-navbar-left uk-margin-large-left">
-				<a href="../" class="uk-navbar-item uk-logo">
-					<img
-						style="max-height: 50px"
-						src="/public/svg/cashresp.svg"
-					/>
-				</a>
-				<ul class="uk-navbar-nav uk-visible@m">
-					<li><a href="/earn/surveys"> Surveys </a></li>
-					<li><a href="/earn/watch"> Watch & Earn </a></li>
-					<li><a href="/earn/offers"> Offers </a></li>
-				</ul>
-			</div>
+	<div class="uk-container" style="width: 100%">
+		<div class="uk-container uk-width-100">
+			<nav class="uk-navbar">
+				<div class="uk-navbar-left">
+					<a href="../" class="uk-navbar-item uk-logo">
+						<img
+							style="max-height: 50px"
+							src="/public/svg/cashresp.svg"
+						/>
+					</a>
+					<ul class="uk-navbar-nav uk-visible@m">
+						<li><a href="/earn/surveys"> Surveys </a></li>
+						<li><a href="/earn/watch"> Watch & Earn </a></li>
+						<li><a href="/earn/offers"> Offers </a></li>
+					</ul>
+				</div>
 
-			<div class="uk-navbar-right uk-margin-large-right">
-				<ul class="uk-navbar-nav uk-visible@m">
-					<li>
-						<a href="#">Help</a>
-						<div class="uk-navbar-dropdown">
-							<ul class="uk-nav uk-navbar-dropdown-nav">
-								<li>
-									<a href="/customer-support">
-										Customer Support
-									</a>
-								</li>
-								<li>
-									<a href="/your-privacy"> Privacy Policy </a>
-								</li>
-								<li>
-									<a href="/terms-of-service">
-										Terms Of Service
-									</a>
-								</li>
-							</ul>
-						</div>
-					</li>
+				<div class="uk-navbar-right">
+					<ul class="uk-navbar-nav uk-visible@m">
+						<li>
+							<a href="#">Help</a>
+							<div class="uk-navbar-dropdown">
+								<ul class="uk-nav uk-navbar-dropdown-nav">
+									<li>
+										<a href="/customer-support">
+											Customer Support
+										</a>
+									</li>
+									<li>
+										<a href="/your-privacy">
+											Privacy Policy
+										</a>
+									</li>
+									<li>
+										<a href="/terms-of-service">
+											Terms Of Service
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
 
-					{{ if .User }} {{ if .User.Admin }}
-					<li>
-						<a href="#">Admin</a>
-						<div class="uk-navbar-dropdown">
-							<ul class="uk-nav uk-navbar-dropdown-nav">
-								<li><a href="/admin/images">Images</a></li>
-								<li><a href="/admin/offers">Offers</a></li>
-							</ul>
-						</div>
-					</li>
-					{{ end }} {{ end }}
-					<li>
-						<a href="#">Account</a>
-						<div class="uk-navbar-dropdown">
-							<ul class="uk-nav uk-navbar-dropdown-nav">
-								{{ if .User }}
-								<li>
-									<a href="/users/profile"> My Profile </a>
-								</li>
-								<li>
-									<a href="/users/my-earnings">My Earnings</a>
-								</li>
-								<li>
-									<a href="/users/withdrawal">Withdrawal</a>
-								</li>
-								{{ else }}
-								<li><a href="/auth/sign-in"> Sign In </a></li>
-								<li><a href="/auth/sign-up"> Sign Up </a></li>
-								{{ end }}
-							</ul>
-						</div>
-					</li>
-					{{ if .User }}
-					<li>
-						<a href="/users/sign-out"> Sign Out </a>
-					</li>
-					{{ end }}
-				</ul>
+						{{ if .User }} {{ if .User.Admin }}
+						<li>
+							<a href="#">Admin</a>
+							<div class="uk-navbar-dropdown">
+								<ul class="uk-nav uk-navbar-dropdown-nav">
+									<li><a href="/admin/images">Images</a></li>
+									<li><a href="/admin/offers">Offers</a></li>
+								</ul>
+							</div>
+						</li>
+						{{ end }} {{ end }}
+						<li>
+							<a href="#">Account</a>
+							<div class="uk-navbar-dropdown">
+								<ul class="uk-nav uk-navbar-dropdown-nav">
+									{{ if .User }}
+									<li>
+										<a href="/users/profile">
+											My Profile
+										</a>
+									</li>
+									<li>
+										<a href="/users/my-earnings"
+											>My Earnings</a
+										>
+									</li>
+									<li>
+										<a href="/users/withdrawal"
+											>Withdrawal</a
+										>
+									</li>
+									{{ else }}
+									<li>
+										<a href="/auth/sign-in"> Sign In </a>
+									</li>
+									<li>
+										<a href="/auth/sign-up"> Sign Up </a>
+									</li>
+									{{ end }}
+								</ul>
+							</div>
+						</li>
+						{{ if .User }}
+						<li>
+							<a href="/users/sign-out"> Sign Out </a>
+						</li>
+						{{ end }}
+					</ul>
 
-				<a
-					uk-navbar-toggle-icon=""
-					href="#offcanvas"
-					uk-toggle=""
-					class="
-						uk-navbar-toggle
-						uk-hidden@m
-						uk-icon
-						uk-navbar-toggle-icon
-					"
-					aria-expanded="false"
-				></a>
-			</div>
-		</nav>
+					<a
+						uk-navbar-toggle-icon=""
+						href="#offcanvas"
+						uk-toggle=""
+						class="
+							uk-navbar-toggle
+							uk-hidden@m
+							uk-icon
+							uk-navbar-toggle-icon
+						"
+						aria-expanded="false"
+					></a>
+				</div>
+			</nav>
+		</div>
 	</div>
 </div>
 
