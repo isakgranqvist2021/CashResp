@@ -16,7 +16,7 @@ type NewLogin struct {
 }
 
 func RedirectWithAlert(c *fiber.Ctx, path string, alert utils.Alert) error {
-	fmt.Printf("Set alert -> %v\n", alert)
+	// fmt.Printf("Set alert -> %v\n", alert)
 
 	session, err := utils.Store.Get(c)
 

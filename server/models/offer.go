@@ -1,12 +1,16 @@
 package models
 
 type Offer struct {
-	Href        string
+	ID          int
 	OfferID     string
 	PublisherID string
 	AppID       string
+	Description string
 	CreatedAt   string
 	UpdatedAt   string
+	Href        string
+	ImageID     int
+	Provider    string
 }
 
 /*
@@ -16,3 +20,8 @@ type Offer struct {
 	&pub_app_id=13859
 	&USER_ID=[USER_ID]
 */
+
+func (o *Offer) CreateNew() error {
+
+	return nil
+}
