@@ -1,61 +1,72 @@
 <!-- @format -->
 
-<div class="p-5">
+<div class="uk-margin-top">
 	<h1>Create Offer</h1>
 	<form method="POST" action="/admin/offers">
-		<section class="form-group">
-			<label for="OfferID" class="form-label">Offer ID</label>
-			<input
-				type="text"
-				class="form-control"
-				name="OfferID"
-				id="OfferID"
-			/>
+		<section class="uk-margin-bottom">
+			<label for="OfferID" class="uk-display-block uk-margin-small-bottom"
+				>Offer ID</label
+			>
+			<input type="text" name="OfferID" id="OfferID" class="uk-input" />
 		</section>
-		<section class="form-group">
-			<label for="PublisherID" class="form-label">Publisher ID</label>
+		<section class="uk-margin-bottom">
+			<label
+				for="PublisherID"
+				class="uk-display-block uk-margin-small-bottom"
+				>Publisher ID</label
+			>
 			<input
 				type="text"
-				class="form-control"
 				name="PublisherID"
 				id="PublisherID"
+				class="uk-input"
 			/>
 		</section>
-		<section class="form-group">
-			<label for="AppID" class="form-label">App ID</label>
-			<input type="text" class="form-control" name="AppID" id="AppID" />
+		<section class="uk-margin-bottom">
+			<label for="AppID" class="uk-display-block uk-margin-small-bottom"
+				>App ID</label
+			>
+			<input type="text" name="AppID" id="AppID" class="uk-input" />
 		</section>
-		<section class="form-group">
-			<label for="Description" class="form-label">Description</label>
-			<input
+		<section class="uk-margin-bottom">
+			<label for="Href" class="uk-display-block uk-margin-small-bottom"
+				>Href</label
+			>
+			<input type="text" name="Href" id="Href" class="uk-input" />
+		</section>
+		<section class="uk-margin-bottom">
+			<label for="ImageID" class="uk-display-block uk-margin-small-bottom"
+				>Image ID</label
+			>
+			<input type="text" name="ImageID" id="ImageID" class="uk-input" />
+		</section>
+		<section class="uk-margin-bottom">
+			<label
+				for="Provider"
+				class="uk-display-block uk-margin-small-bottom"
+				>Provider</label
+			>
+			<input type="text" name="Provider" id="Provider" class="uk-input" />
+		</section>
+		<section class="uk-margin-bottom">
+			<label
+				for="Description"
+				class="uk-display-block uk-margin-small-bottom"
+				>Description</label
+			>
+			<textarea
 				type="text"
-				class="form-control"
 				name="Description"
 				id="Description"
-			/>
+				class="uk-textarea"
+			></textarea>
 		</section>
-		<section class="form-group">
-			<label for="Href" class="form-label">Href</label>
-			<input type="text" class="form-control" name="Href" id="Href" />
-		</section>
-		<section class="form-group">
-			<label for="ImageID" class="form-label">Image ID</label>
-			<input
-				type="text"
-				class="form-control"
-				name="ImageID"
-				id="ImageID"
-			/>
-		</section>
-		<section class="form-group">
-			<label for="Provider" class="form-label">Provider</label>
-			<input
-				type="text"
-				class="form-control"
-				name="Provider"
-				id="Provider"
-			/>
-		</section>
-		<button>Submit</button>
+		<button
+			class="
+				uk-display-block uk-margin-auto-left uk-button uk-button-primary
+			"
+		>
+			Submit
+		</button>
 	</form>
 </div>
