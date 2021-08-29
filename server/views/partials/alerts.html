@@ -1,8 +1,8 @@
 <!-- @format -->
 
 {{ if .Alert }}
-<div class="alert alert-{{ .Alert.Severity }}">
+<div class="uk-alert-{{ .Alert.Severity }} uk-margin-remove-top" uk-alert>
+	<a class="uk-alert-close" uk-close></a>
 	<p>{{ .Alert.Message }}</p>
-	<span class="material-icons-outlined">close</span>
 </div>
 {{ end }}

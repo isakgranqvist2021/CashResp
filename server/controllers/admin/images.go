@@ -53,7 +53,7 @@ func PostImages(c *fiber.Ctx) error {
 
 	if !utils.LongEnough(image.Alt, 1, 45) {
 		return controllers.RedirectWithAlert(c, "/admin/images", utils.Alert{
-			Severity: "error",
+			Severity: "danger",
 			Message:  "please enter an alt text",
 		})
 	}

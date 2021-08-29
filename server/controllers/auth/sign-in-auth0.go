@@ -14,7 +14,7 @@ func SignInAuth0(c *fiber.Ctx) error {
 
 	if err != nil {
 		return controllers.RedirectWithAlert(c, "/auth/sign-in", utils.Alert{
-			Severity: "error",
+			Severity: "danger",
 			Message:  err.Error(),
 		})
 	}
@@ -23,7 +23,7 @@ func SignInAuth0(c *fiber.Ctx) error {
 	_, err = rand.Read(b)
 	if err != nil {
 		return controllers.RedirectWithAlert(c, "/auth/sign-in", utils.Alert{
-			Severity: "error",
+			Severity: "danger",
 			Message:  err.Error(),
 		})
 	}
@@ -35,7 +35,7 @@ func SignInAuth0(c *fiber.Ctx) error {
 
 	if err != nil {
 		return controllers.RedirectWithAlert(c, "/auth/sign-in", utils.Alert{
-			Severity: "error",
+			Severity: "danger",
 			Message:  err.Error(),
 		})
 	}
@@ -43,7 +43,7 @@ func SignInAuth0(c *fiber.Ctx) error {
 	authenticator, err := utils.NewAuthenticator()
 	if err != nil {
 		return controllers.RedirectWithAlert(c, "/auth/sign-in", utils.Alert{
-			Severity: "error",
+			Severity: "danger",
 			Message:  err.Error(),
 		})
 	}

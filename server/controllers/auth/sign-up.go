@@ -31,35 +31,35 @@ func PostSignUp(c *fiber.Ctx) error {
 
 	if err := c.BodyParser(&u); err != nil {
 		return controllers.RedirectWithAlert(c, c.OriginalURL(), utils.Alert{
-			Severity: "error",
+			Severity: "danger",
 			Message:  "an unexpected error has occured",
 		})
 	}
 
 	if !utils.LongEnough(u.Email, 5, 499) {
 		return controllers.RedirectWithAlert(c, c.OriginalURL(), utils.Alert{
-			Severity: "error",
+			Severity: "danger",
 			Message:  "email too short",
 		})
 	}
 
 	if !utils.LongEnough(u.Password, 12, 499) {
 		return controllers.RedirectWithAlert(c, c.OriginalURL(), utils.Alert{
-			Severity: "error",
+			Severity: "danger",
 			Message:  "password too short",
 		})
 	}
 
 	if err := u.Register(); err != nil {
 		return controllers.RedirectWithAlert(c, c.OriginalURL(), utils.Alert{
-			Severity: "error",
+			Severity: "danger",
 			Message:  err.Error(),
 		})
 	}
 
 	if err := u.SetVerifyEmailAndSend(); err != nil {
 		return controllers.RedirectWithAlert(c, c.OriginalURL(), utils.Alert{
-			Severity: "error",
+			Severity: "danger",
 			Message:  "mail could not be sent",
 		})
 	}

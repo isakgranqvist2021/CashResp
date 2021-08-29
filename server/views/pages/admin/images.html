@@ -3,14 +3,17 @@
 <div class="p-5">
 	<h1>Images</h1>
 	<form
+		class="uk-margin-bottom"
 		id="upload-img"
 		enctype="multipart/form-data"
 		method="POST"
 		action="/admin/images"
 	>
-		<section class="form-group me-3">
-			<label for="alt" class="form-label">Alt Text</label>
-			<input type="text" name="alt" id="alt" />
+		<section class="uk-margin-right uk-margin-bottom">
+			<label for="alt" class="uk-display-block uk-margin-small-bottom"
+				>Alt Text</label
+			>
+			<input type="text" name="alt" id="alt" class="uk-input" />
 		</section>
 		<section class="form-group">
 			<input
@@ -23,8 +26,10 @@
 		</section>
 	</form>
 
-	<div class="py-5">
-		<table>
+	<div class="uk-overflow-auto">
+		<table
+			class="uk-table uk-table-striped uk-table-condensed uk-text-nowrap"
+		>
 			<thead>
 				<tr>
 					<th>ID</th>

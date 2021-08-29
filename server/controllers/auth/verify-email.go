@@ -28,7 +28,7 @@ func PostVerifyEmail(c *fiber.Ctx) error {
 	if err != nil {
 		fmt.Println(err)
 		return controllers.RedirectWithAlert(c, "/", utils.Alert{
-			Severity: "error",
+			Severity: "danger",
 			Message:  "an unexpected error has occured",
 		})
 	}
@@ -39,7 +39,7 @@ func PostVerifyEmail(c *fiber.Ctx) error {
 
 	if err := u.VerifyEmail(); err != nil {
 		return controllers.RedirectWithAlert(c, "/", utils.Alert{
-			Severity: "error",
+			Severity: "danger",
 			Message:  "an unexpected error has occured",
 		})
 	}

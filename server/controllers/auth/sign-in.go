@@ -22,35 +22,35 @@ func PostSignIn(c *fiber.Ctx) error {
 
 	if err != nil {
 		return controllers.RedirectWithAlert(c, "/", utils.Alert{
-			Severity: "error",
+			Severity: "danger",
 			Message:  "session has exipred",
 		})
 	}
 
 	if err := c.BodyParser(&u); err != nil {
 		return controllers.RedirectWithAlert(c, c.OriginalURL(), utils.Alert{
-			Severity: "error",
+			Severity: "danger",
 			Message:  "an unexpected error has occured",
 		})
 	}
 
 	if !utils.LongEnough(u.Email, 5, 499) {
 		return controllers.RedirectWithAlert(c, c.OriginalURL(), utils.Alert{
-			Severity: "error",
+			Severity: "danger",
 			Message:  "email too short",
 		})
 	}
 
 	if !utils.LongEnough(u.Password, 12, 499) {
 		return controllers.RedirectWithAlert(c, c.OriginalURL(), utils.Alert{
-			Severity: "error",
+			Severity: "danger",
 			Message:  "password too short",
 		})
 	}
 
 	if err := u.Login(); err != nil {
 		return controllers.RedirectWithAlert(c, c.OriginalURL(), utils.Alert{
-			Severity: "error",
+			Severity: "danger",
 			Message:  err.Error(),
 		})
 	}

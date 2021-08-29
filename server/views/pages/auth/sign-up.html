@@ -1,22 +1,30 @@
 <!-- @format -->
 
-<div class="uk-container uk-margin-large-top">
-	<header>
-		<h1>
-			Make Your Voice Heard <br />
-			While Earning Cash
-		</h1>
-	</header>
-	<div uk-grid>
-		<form method="POST" action="/auth/sign-up" class="uk-width-expand@m">
-			<h3>Sign Up</h3>
-
+<div class="uk-container uk-margin-xlarge-top">
+	<div class="uk-grid-large" uk-grid>
+		<form
+			method="POST"
+			action="/auth/sign-up"
+			class="uk-width-expand@m uk-flex uk-flex-column uk-flex-center"
+		>
+			<h1 class="uk-margin-medium-bottom">
+				Make Your Voice Heard <br />
+				While Earning Cash
+			</h1>
 			<section class="uk-margin-bottom">
-				<label for="email">Email</label>
+				<label
+					for="email"
+					class="uk-display-block uk-margin-small-bottom"
+					>Email</label
+				>
 				<input id="email" type="text" name="email" class="uk-input" />
 			</section>
 			<section class="uk-margin-bottom">
-				<label for="password">Password</label>
+				<label
+					for="password"
+					class="uk-display-block uk-margin-small-bottom"
+					>Password</label
+				>
 				<input
 					id="password"
 					type="password"
@@ -25,11 +33,23 @@
 				/>
 			</section>
 
-			<p>Already have an account? <a href="/auth/sign-in">Sign In</a></p>
+			<div class="uk-flex">
+				<p>
+					Already have an account? <a href="/auth/sign-in">Sign In</a>
+				</p>
 
-			<button class="uk-button uk-button-primary" type="submit">
-				Sign Up
-			</button>
+				<button
+					class="
+						uk-button
+						uk-button-primary
+						uk-display-block
+						uk-margin-auto-left
+					"
+					type="submit"
+				>
+					Sign Up
+				</button>
+			</div>
 		</form>
 		<img
 			class="uk-width-expand@m"
