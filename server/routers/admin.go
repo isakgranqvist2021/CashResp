@@ -8,6 +8,6 @@ import (
 func Admin(r fiber.Router) {
 	r.Get("/images", admin.GetImages)
 	r.Post("/images", admin.PostImages)
-	r.Get("/offers", admin.GetOffers)
-	r.Post("/offers", admin.PostOffers)
+	r.Get("/offers/create", admin.GetCreateOffers)
+	r.Post("/offers/create", admin.PostCreateOffers)
 }

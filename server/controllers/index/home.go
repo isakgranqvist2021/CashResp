@@ -7,7 +7,7 @@ import (
 
 func GetHome(c *fiber.Ctx) error {
 	if utils.SessionActive(c) {
-		return c.Redirect("/users/profile")
+		return c.Redirect("/earn/surveys")
 	} else {
 		return c.Redirect("/auth/sign-in")
 	}

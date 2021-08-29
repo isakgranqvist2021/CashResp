@@ -11,7 +11,7 @@
 				<div class="uk-navbar-left">
 					<a href="../" class="uk-navbar-item uk-logo">
 						<img
-							style="max-height: 50px"
+							style="max-height: 40px"
 							src="/public/svg/cashresp.svg"
 						/>
 					</a>
@@ -25,7 +25,9 @@
 				<div class="uk-navbar-right">
 					<ul class="uk-navbar-nav uk-visible@m">
 						<li>
-							<a href="#">Help</a>
+							<a href="#"
+								>Help <span uk-icon="icon: chevron-down"></span
+							></a>
 							<div class="uk-navbar-dropdown">
 								<ul class="uk-nav uk-navbar-dropdown-nav">
 									<li>
@@ -49,17 +51,26 @@
 
 						{{ if .User }} {{ if .User.Admin }}
 						<li>
-							<a href="#">Admin</a>
+							<a href="#"
+								>Admin <span uk-icon="icon: chevron-down"></span
+							></a>
 							<div class="uk-navbar-dropdown">
 								<ul class="uk-nav uk-navbar-dropdown-nav">
 									<li><a href="/admin/images">Images</a></li>
-									<li><a href="/admin/offers">Offers</a></li>
+									<li>
+										<a href="/admin/offers/create"
+											>Create Offer</a
+										>
+									</li>
 								</ul>
 							</div>
 						</li>
 						{{ end }} {{ end }}
 						<li>
-							<a href="#">Account</a>
+							<a href="#"
+								>Account
+								<span uk-icon="icon: chevron-down"></span
+							></a>
 							<div class="uk-navbar-dropdown">
 								<ul class="uk-nav uk-navbar-dropdown-nav">
 									{{ if .User }}

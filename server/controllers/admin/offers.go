@@ -9,8 +9,8 @@ import (
 	"github.com/isakgranqvist2021/surveys/utils"
 )
 
-func GetOffers(c *fiber.Ctx) error {
-	return c.Render("pages/admin/offers", fiber.Map{
+func GetCreateOffers(c *fiber.Ctx) error {
+	return c.Render("pages/admin/create-offer", fiber.Map{
 		"Title": "Offers",
 		"User":  c.Locals("User"),
 		"Alert": c.Locals("Alert"),
@@ -19,20 +19,21 @@ func GetOffers(c *fiber.Ctx) error {
 }
 
 /*
-type Offer struct {
-	ID          int
-	OfferID     string
-	PublisherID string
-	AppID       string
-	Description string
-	CreatedAt   string
-	UpdatedAt   string
-	Href        string
-	ImageID     int
-	Provider    string
-}
+	type Offer struct {
+		ID          int
+		OfferID     string
+		PublisherID string
+		AppID       string
+		Description string
+		CreatedAt   string
+		UpdatedAt   string
+		Href        string
+		ImageID     int
+		Provider    string
+	}
 */
-func PostOffers(c *fiber.Ctx) error {
+
+func PostCreateOffers(c *fiber.Ctx) error {
 	var offer models.Offer
 
 	if err := c.BodyParser(&offer); err != nil {
@@ -93,7 +94,7 @@ func PostOffers(c *fiber.Ctx) error {
 		})
 	}
 
-	return controllers.RedirectWithAlert(c, "/admin/offers", utils.Alert{
+	return controllers.RedirectWithAlert(c, "/admin/offers/create", utils.Alert{
 		Severity: "success",
 		Message:  "offer has been created",
 	})
