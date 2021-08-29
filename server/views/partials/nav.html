@@ -1,38 +1,87 @@
 <!-- @format -->
 
-<nav class="main-nav d-flex flex-column">
-	<div class="nav-content">
-		<div class="nav-links d-flex flex-column">
-			<h3>Earn</h3>
-			<a href="/earn/surveys"> Surveys </a>
-			<a href="/earn/watch"> Watch & Earn </a>
-			<a href="/earn/offers"> Offers </a>
-		</div>
-		<div class="nav-links d-flex flex-column">
-			<h3>Help</h3>
-			<a href="/customer-support"> Customer Support </a>
-			<a href="/your-privacy"> Privacy Policy </a>
-			<a href="/terms-of-service"> Terms Of Service </a>
-		</div>
-		<div class="nav-links d-flex flex-column">
-			<h3>Account</h3>
-			{{ if .User }}
-			<a href="/users/profile"> My Profile </a>
-			<a href="/users/my-earnings">My Earnings</a>
-			<a href="/users/withdrawal">Withdrawal</a>
-			<a href="/users/sign-out"> Sign Out </a>
-			{{ else }}
-			<a href="/auth/sign-in"> Sign In </a>
-			<a href="/auth/sign-up"> Sign Up </a>
-			{{ end }}
+<div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
+	<nav class="uk-navbar-container" uk-navbar>
+		<div class="uk-navbar-left">
+			<ul class="uk-navbar-nav">
+				<li class="uk-active">
+					<a href="/">
+						<img
+							style="max-height: 50px"
+							src="https://static.isakgranqvist.com/svg/cashresp.symbol.svg"
+						/>
+					</a>
+				</li>
+				<li>
+					<a href="#">Earn</a>
+					<div class="uk-navbar-dropdown">
+						<ul class="uk-nav uk-navbar-dropdown-nav">
+							<li><a href="/earn/surveys"> Surveys </a></li>
+							<li><a href="/earn/watch"> Watch & Earn </a></li>
+							<li><a href="/earn/offers"> Offers </a></li>
+						</ul>
+					</div>
+				</li>
+
+				<li>
+					<a href="#">Help</a>
+					<div class="uk-navbar-dropdown">
+						<ul class="uk-nav uk-navbar-dropdown-nav">
+							<li>
+								<a href="/customer-support">
+									Customer Support
+								</a>
+							</li>
+							<li>
+								<a href="/your-privacy"> Privacy Policy </a>
+							</li>
+							<li>
+								<a href="/terms-of-service">
+									Terms Of Service
+								</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+			</ul>
 		</div>
 
-		{{ if .User }} {{ if .User.Admin }}
-		<div class="nav-links d-flex flex-column">
-			<h3>Admin</h3>
-			<a href="/admin/images">Images</a>
-			<a href="/admin/offers">Offers</a>
+		<div class="uk-navbar-right">
+			<ul class="uk-navbar-nav">
+				{{ if .User }} {{ if .User.Admin }}
+				<li>
+					<a href="#">Admin</a>
+					<div class="uk-navbar-dropdown">
+						<ul class="uk-nav uk-navbar-dropdown-nav">
+							<li><a href="/admin/images">Images</a></li>
+							<li><a href="/admin/offers">Offers</a></li>
+						</ul>
+					</div>
+				</li>
+				{{ end }} {{ end }}
+				<li>
+					<a href="#">Account</a>
+					<div class="uk-navbar-dropdown">
+						<ul class="uk-nav uk-navbar-dropdown-nav">
+							{{ if .User }}
+							<li><a href="/users/profile"> My Profile </a></li>
+							<li>
+								<a href="/users/my-earnings">My Earnings</a>
+							</li>
+							<li><a href="/users/withdrawal">Withdrawal</a></li>
+							{{ else }}
+							<li><a href="/auth/sign-in"> Sign In </a></li>
+							<li><a href="/auth/sign-up"> Sign Up </a></li>
+							{{ end }}
+						</ul>
+					</div>
+				</li>
+				{{ if .User }}
+				<li>
+					<a href="/users/sign-out"> Sign Out </a>
+				</li>
+				{{ end }}
+			</ul>
 		</div>
-		{{ end }} {{ end }}
-	</div>
-</nav>
+	</nav>
+</div>

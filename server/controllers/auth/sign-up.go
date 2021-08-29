@@ -12,11 +12,10 @@ import (
 
 func GetSignUp(c *fiber.Ctx) error {
 	return c.Render("pages/auth/sign-up", fiber.Map{
-		"Title":       "Sign Up",
-		"User":        c.Locals("User"),
-		"Alert":       c.Locals("Alert"),
-		"Stylesheets": []string{"auth.min.css"},
-		"Data":        nil,
+		"Title": "Sign Up",
+		"User":  c.Locals("User"),
+		"Alert": c.Locals("Alert"),
+		"Data":  nil,
 	})
 }
 

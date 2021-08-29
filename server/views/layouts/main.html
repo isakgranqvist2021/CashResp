@@ -6,6 +6,10 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/uikit@3.7.2/dist/css/uikit.min.css"
+		/>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
@@ -16,28 +20,17 @@
 			rel="stylesheet"
 			href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined"
 		/>
-		<link
-			rel="stylesheet"
-			href="https://static.isakgranqvist.com/css/helpers.css"
-		/>
-		<link rel="stylesheet" href="/public/css/main.min.css" />
 		{{ if .Stylesheets }} {{ range .Stylesheets }}
 		<link rel="stylesheet" href="/public/css/{{ . }}" />
 		{{ end }} {{ end }}
 		<title>Cashresp | {{ .Title }}</title>
 	</head>
 	<body>
-		<main>
-			{{ template "partials/toolbar" . }}
+		{{ template "partials/nav" . }} {{ template "partials/alerts" . }}
+		<main>{{ embed }}</main>
 
-			<div class="layout">
-				{{ template "partials/nav" . }}
-				<div class="page">
-					{{ template "partials/alerts" . }} {{ embed }}
-				</div>
-			</div>
-		</main>
-
+		<script src="https://cdn.jsdelivr.net/npm/uikit@3.7.2/dist/js/uikit.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/uikit@3.7.2/dist/js/uikit-icons.min.js"></script>
 		<script src="/public/js/helpers.js"></script>
 	</body>
 </html>

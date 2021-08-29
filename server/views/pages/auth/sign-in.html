@@ -1,66 +1,64 @@
 <!-- @format -->
-<section
-	class="
-		w-100
-		min-vh-100
-		d-flex
-		align-items-center
-		justify-content-center
-		flex-column
-		login-form
-	"
->
+
+<div class="uk-container uk-margin-large-top">
 	<header>
 		<h1>Make Your Voice Heard <br />While Earning Cash</h1>
 	</header>
-	<section class="p-3 d-flex form-container">
-		<form
-			method="POST"
-			action="/auth/sign-in"
-			class="flex-grow-1 shadow p-5 rounded"
-		>
-			<div class="d-flex social-auth">
+	<div uk-grid>
+		<form method="POST" action="/auth/sign-in" class="uk-width-expand@m">
+			<div class="uk-margin-top">
 				<a
 					href="/auth/sign-in/auth0"
-					class="p-3 shadow"
 					title="Sign in with facebook"
+					class="uk-button uk-button-default"
 				>
-					<img src="/public/svg/facebook.svg" alt="Facebook logo" />
+					Sign in with
+					<img
+						src="/public/svg/facebook.svg"
+						alt="Facebook logo"
+						width="16"
+						height="16"
+					/>
 				</a>
 				<a
 					href="/auth/sign-in/auth0"
-					class="p-3 shadow"
 					title="Sign in with google"
+					class="uk-button uk-button-default"
 				>
-					<img src="/public/svg/google.svg" alt="Google logo" />
+					Sign in with
+					<img
+						src="/public/svg/google.svg"
+						alt="Google logo"
+						width="16"
+						height="16"
+					/>
 				</a>
 			</div>
-			<h3 class="form-title">Sign In</h3>
-			<section class="form-group">
-				<label for="email" class="form-label">Email</label>
-				<input
-					id="email"
-					type="text"
-					name="email"
-					class="form-control"
-				/>
+			<h3>Sign In</h3>
+			<section class="uk-margin-bottom">
+				<label for="email" class="uk-form-label">Email</label>
+				<input id="email" type="text" name="email" class="uk-input" />
 			</section>
-			<section class="form-group">
-				<label for="password" class="form-label">Password</label>
+			<section class="uk-margin-bottom">
+				<label for="password">Password</label>
 				<input
 					id="password"
 					type="password"
 					name="password"
-					class="form-control"
+					class="uk-input"
 				/>
 			</section>
 
-			<p class="form-helper-text">
-				Don't have an account? <a href="/auth/sign-up">Sign Up</a>
-			</p>
+			<p>Don't have an account? <a href="/auth/sign-up">Sign Up</a></p>
 
-			<button class="d-block ms-auto" type="submit">Sign In</button>
+			<button class="uk-button uk-button-primary" type="submit">
+				Sign In
+			</button>
 		</form>
-		<img class="piggybank" src="/public/svg/piggy_bank.svg" alt="" />
-	</section>
-</section>
+		<img
+			class="uk-width-expand@m"
+			src="/public/svg/piggy_bank.svg"
+			alt="Piggy Bank"
+		/>
+	</div>
+</div>

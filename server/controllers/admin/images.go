@@ -18,10 +18,9 @@ func GetImages(c *fiber.Ctx) error {
 	}
 
 	return c.Render("pages/admin/images", fiber.Map{
-		"Title":       "Images",
-		"User":        c.Locals("User"),
-		"Alert":       c.Locals("Alert"),
-		"Stylesheets": []string{"images.min.css"},
+		"Title": "Images",
+		"User":  c.Locals("User"),
+		"Alert": c.Locals("Alert"),
 		"Data": map[string]interface{}{
 			"Images": images,
 		},
