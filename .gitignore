@@ -16,6 +16,7 @@
 # misc
 /client/.DS_Store
 /client/*.pem
+/.vscode 
 
 # debug
 /client/npm-debug.log*
