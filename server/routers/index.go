@@ -1,13 +1,9 @@
 package routers
 
-import (
-	"github.com/gofiber/fiber/v2"
-	"github.com/isakgranqvist2021/surveys/controllers/index"
-)
+import "github.com/gofiber/fiber/v2"
 
 func Index(r fiber.Router) {
-	r.Get("/your-privacy", index.GetPrivacy)
-	r.Get("/customer-support", index.GetSupport)
-	r.Get("/terms-of-service", index.GetTOS)
-	r.Get("/", index.GetHome)
+	r.Get("/", func(c *fiber.Ctx) error {
+		return c.SendString("qwt")
+	})
 }

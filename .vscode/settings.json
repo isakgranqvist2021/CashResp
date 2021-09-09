@@ -1,0 +1,29 @@
+{
+    "workbench.colorTheme": "GitHub Dark",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "prettier.insertPragma": true,
+    "prettier.tabWidth": 4,
+    "prettier.jsxSingleQuote": true,
+    "prettier.jsxBracketSameLine": true,
+    "prettier.singleQuote": true,
+    "prettier.useTabs": true,
+    "html.format.indentInnerHtml": true,
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[go]": {
+        "editor.defaultFormatter": "golang.go"
+    },
+    "[js]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "liveSassCompile.settings.formats": [
+        {
+            "format": "compressed",
+            "extensionName": ".min.css",
+            "savePath": "/server/public/css"
+        },
+    ]
+}

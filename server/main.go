@@ -4,39 +4,16 @@ import (
 	"log"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/template/html"
-	"github.com/isakgranqvist2021/surveys/middlewares"
-	"github.com/isakgranqvist2021/surveys/routers"
-	"github.com/isakgranqvist2021/surveys/utils"
-	"github.com/joho/godotenv"
+	"github.com/isakgranqvist2021/cashresp/routers"
 )
 
 func main() {
-	engine := html.New("./views", ".html")
-	engine.Reload(true)
+	app := fiber.New()
 
-	// read .env file in root directory
-	if err := godotenv.Load(); err != nil {
-		panic(err)
-	}
+	gateway := app.Group("/api")
 
-	utils.CreateStore()
-	utils.CreateTablesIfNotExists()
+	routers.Index(gateway.Group("/"))
+	routers.Users(gateway.Group("/users"))
 
-	app := fiber.New(fiber.Config{
-		Views:       engine,
-		ViewsLayout: "layouts/main",
-	})
-
-	app.Static("/public", "./public")
-	app.Static("/uploads", "./uploads")
-	app.Use("*", middlewares.SetLocals)
-
-	routers.Index(app.Group("/"))
-	routers.Users(app.Group("/users", middlewares.LoggedIn))
-	routers.Earn(app.Group("/earn", middlewares.LoggedIn))
-	routers.Auth(app.Group("/auth", middlewares.LoggedOut))
-	routers.Admin(app.Group("/admin", middlewares.IsAdmin))
-
-	log.Fatal(app.Listen(":8080"))
+	log.Fatal(app.Listen(":3000"))
 }
