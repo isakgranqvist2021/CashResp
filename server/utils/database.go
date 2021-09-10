@@ -1,4 +1,4 @@
-package database
+package utils
 
 import (
 	"database/sql"
@@ -9,6 +9,7 @@ import (
 	"os"
 	"time"
 
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/joho/godotenv"
 )
 
@@ -36,6 +37,10 @@ func Connect() *sql.DB {
 	db.SetConnMaxLifetime(time.Minute * 3)
 	db.SetMaxOpenConns(10)
 	db.SetMaxIdleConns(10)
+
+	/*
+		always call defer db.Close() when using database
+	*/
 
 	return db
 }
