@@ -13,7 +13,8 @@ func main() {
 	app := fiber.New()
 
 	if err := utils.InitQraphQL(); err != nil {
-		log.Fatal("An error occured while initializing GraphQL")
+
+		log.Fatalf("An error occured while initializing GraphQL\n %v", err)
 	}
 
 	gateway := app.Group("/api")

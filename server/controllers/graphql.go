@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"fmt"
+	"log"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/graphql-go/graphql"
@@ -12,7 +13,8 @@ func GraphQL(c *fiber.Ctx) error {
 	var data map[string]interface{}
 
 	if err := c.BodyParser(&data); err != nil {
-		return c.JSON("big error")
+		log.Fatal(err)
+		return c.JSON("an error occured while parsing graphql query")
 	}
 
 	r := graphql.Do(graphql.Params{
@@ -21,7 +23,7 @@ func GraphQL(c *fiber.Ctx) error {
 	})
 
 	if len(r.Errors) > 0 {
-		return c.JSON("big error")
+		return c.JSON(r.Errors[len(r.Errors)-1])
 	}
 
 	return c.JSON(r)
