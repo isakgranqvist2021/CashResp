@@ -12,20 +12,16 @@ Content-Type: application/json<br/>
 }
 ```
 
-URL: /api/auth/register<br/>
-Method: POST<br/>
-
 ```json
+POST /api/auth/register
 {
 	"email": "String",
 	"password": "String"
 }
 ```
 
-URL: /api/auth/login<br/>
-Method: POST<br/>
-
 ```json
+POST /api/auth/login
 {
 	"email": "String",
 	"password": "String"
