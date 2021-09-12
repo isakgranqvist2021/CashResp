@@ -2,10 +2,7 @@ package utils
 
 import (
 	"database/sql"
-	"encoding/json"
-	"errors"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"time"
 
@@ -14,7 +11,6 @@ import (
 )
 
 func Connect() *sql.DB {
-	// read .env file in root directory
 	if err := godotenv.Load(); err != nil {
 		panic(err)
 	}
@@ -43,21 +39,4 @@ func Connect() *sql.DB {
 	*/
 
 	return db
-}
-
-func GetKeys() (map[string]map[string]string, error) {
-	bytes, err := ioutil.ReadFile("./store/keys.json")
-
-	if err != nil {
-		fmt.Println(err)
-		return nil, errors.New("internal server error")
-	}
-
-	data := make(map[string]map[string]string)
-	if err := json.Unmarshal(bytes, &data); err != nil {
-		fmt.Println(err)
-		return nil, errors.New("internal server error")
-	}
-
-	return data, nil
 }
