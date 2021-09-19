@@ -1,0 +1,40 @@
+/** @format */
+
+@import './vars';
+
+.main {
+	display: flex;
+	justify-content: center;
+	padding: 10rem 6.25rem;
+}
+
+.content {
+	width: 40%;
+	display: flex;
+	flex-direction: column;
+}
+
+.svg {
+	margin-top: 9.375rem;
+	margin-left: -6.25rem;
+}
+
+.h1 {
+	font-size: 5.125rem;
+	color: $light;
+
+	span {
+		color: $orange;
+	}
+}
+
+.cta {
+	background-color: $purple;
+	width: 22rem;
+	height: 5.4rem;
+	font-size: 1.5rem;
+	border: none;
+	color: $light;
+	font-family: 'Paytone One', sans-serif;
+	border-radius: 0.25rem;
+}

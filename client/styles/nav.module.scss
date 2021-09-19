@@ -1,0 +1,36 @@
+/** @format */
+
+@import './vars';
+
+.nav {
+	height: 4.375rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: $light;
+	padding: 0 0 0 1.125rem;
+	font-size: 1.2rem;
+	color: $green;
+	font-weight: 800;
+
+	a {
+		font-family: 'Open Sans', sans-serif;
+		margin-right: 2.5rem;
+	}
+}
+
+.links {
+}
+
+.cta {
+	width: 13rem;
+	height: 3.188rem;
+	border: none;
+	background-color: $purple;
+	color: $light;
+	font-family: 'Paytone One', sans-serif;
+	font-size: inherit;
+	margin-right: 2.5rem;
+	letter-spacing: 1.2px;
+	border-radius: 0.25rem;
+}

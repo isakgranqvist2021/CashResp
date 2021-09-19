@@ -1,5 +1,31 @@
 /** @format */
 
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Paytone+One&family=Roboto:wght@400;500&display=swap');
+@import './vars';
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	min-width: 100%;
+	min-height: 100%;
+}
+
 body {
 	margin: 0;
+	background-color: $dark;
+	font-family: 'Roboto', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Paytone One', sans-serif;
 }
