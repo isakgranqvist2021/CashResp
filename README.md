@@ -1,9 +1,7 @@
 <!-- @format -->
 
-all responses from the api will have this structure<br/>
-Content-Type: application/json<br/>
-
 ```json
+Response Structure
 {
 	"message": "String",
 	"success": "Boolean",
