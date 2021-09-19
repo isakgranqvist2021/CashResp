@@ -7,10 +7,10 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	background-color: $light;
+	background-color: $light_primary;
 	padding: 0 0 0 1.125rem;
 	font-size: 1.2rem;
-	color: $green;
+	color: $green_primary;
 	font-weight: 800;
 
 	a {
@@ -19,18 +19,19 @@
 	}
 }
 
-.links {
-}
-
 .cta {
 	width: 13rem;
 	height: 3.188rem;
 	border: none;
-	background-color: $purple;
-	color: $light;
+	background-color: $purple_primary;
+	color: $light_primary;
 	font-family: 'Paytone One', sans-serif;
 	font-size: inherit;
 	margin-right: 2.5rem;
 	letter-spacing: 1.2px;
 	border-radius: 0.25rem;
+
+	&:hover {
+		background-color: $purple_dark;
+	}
 }

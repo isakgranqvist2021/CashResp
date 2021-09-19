@@ -17,7 +17,7 @@ body {
 
 body {
 	margin: 0;
-	background-color: $dark;
+	background-color: $dark_primary;
 	font-family: 'Roboto', sans-serif;
 }
 
@@ -28,4 +28,13 @@ h4,
 h5,
 h6 {
 	font-family: 'Paytone One', sans-serif;
+}
+
+button,
+a {
+	cursor: pointer;
+}
+
+button {
+	transition: all 300ms ease;
 }

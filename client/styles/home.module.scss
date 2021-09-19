@@ -21,20 +21,24 @@
 
 .h1 {
 	font-size: 5.125rem;
-	color: $light;
+	color: $light_primary;
 
 	span {
-		color: $orange;
+		color: $orange_primary;
 	}
 }
 
 .cta {
-	background-color: $purple;
+	background-color: $purple_primary;
 	width: 22rem;
 	height: 5.4rem;
 	font-size: 1.5rem;
 	border: none;
-	color: $light;
+	color: $light_primary;
 	font-family: 'Paytone One', sans-serif;
 	border-radius: 0.25rem;
+
+	&:hover {
+		background-color: $purple_dark;
+	}
 }
