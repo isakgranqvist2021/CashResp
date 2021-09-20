@@ -5,7 +5,7 @@
 .main {
 	display: flex;
 	justify-content: center;
-	padding: 10rem 6.25rem;
+	padding: 8rem 6.25rem;
 }
 
 .content {
@@ -28,6 +28,13 @@
 	}
 }
 
+.bankNote {
+	animation-name: fallDown;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-duration: 3s;
+}
+
 .cta {
 	background-color: $purple_primary;
 	width: 22rem;
@@ -40,5 +47,16 @@
 
 	&:hover {
 		background-color: $purple_dark;
+	}
+}
+
+@keyframes fallDown {
+	0% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(100%);
+		opacity: 0;
 	}
 }
