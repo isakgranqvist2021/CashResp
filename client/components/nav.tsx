@@ -1,7 +1,7 @@
 /** @format */
 
 import { useState, useEffect } from 'react';
-import classes from '../styles/nav.module.scss';
+import classes from '../styles/modules/nav.module.scss';
 
 export default function Nav(): JSX.Element {
 	const [open, setOpen] = useState<boolean>(false);

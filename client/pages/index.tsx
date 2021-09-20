@@ -2,8 +2,8 @@
 
 import type { NextPage } from 'next';
 import Head from 'next/head';
-
-import classes from '../styles/home.module.scss';
+import Hero from '../components/hero';
+import classes from '../styles/modules/home.module.scss';
 
 const Home: NextPage = (): JSX.Element => {
 	return (
@@ -14,14 +14,10 @@ const Home: NextPage = (): JSX.Element => {
 			</Head>
 
 			<main className={classes.main}>
-				<div className={classes.content}>
-					<h1 className={classes.h1}>
-						Make <span>Money</span> By Sharing Your Opinions
-					</h1>
-					<button className={classes.cta}>Start Earning Today</button>
-				</div>
-				<img src='/index.svg' alt='' className={classes.svg} />
+				<Hero />
 			</main>
+
+			<script src='/three.min.js' />
 		</div>
 	);
 };
