@@ -1,8 +1,22 @@
 /** @format */
 
+import { useState, useEffect } from 'react';
 import classes from '../styles/nav.module.scss';
 
 export default function Nav(): JSX.Element {
+	const [open, setOpen] = useState<boolean>(false);
+
+	useEffect(() => {
+		let body = document.querySelector('body');
+		if (body !== null) {
+			if (open) {
+				body.style.marginLeft = '225px';
+			} else {
+				body.style.marginLeft = '0';
+			}
+		}
+	}, [open]);
+
 	return (
 		<nav className={classes.nav}>
 			<svg
@@ -25,10 +39,27 @@ export default function Nav(): JSX.Element {
 				/>
 			</svg>
 
-			<div className={classes.links}>
-				<button className={classes.cta}>Join CashResp</button>
-				<a>Log In</a>
+			<div
+				className={[classes.links, open ? classes.linksOpen : ''].join(
+					' '
+				)}>
+				<div className={classes.linksContainer}>
+					<a className={classes.cta}>Join CashResp</a>
+					<a>Log In</a>
+				</div>
 			</div>
+			<div className={classes.bars} onClick={() => setOpen(true)}>
+				<span className={classes.line}></span>
+				<span className={classes.line}></span>
+				<span className={classes.line}></span>
+			</div>
+
+			<div
+				onClick={() => setOpen(false)}
+				className={[
+					classes.backdrop,
+					open ? classes.backdropOpen : '',
+				].join(' ')}></div>
 		</nav>
 	);
 }

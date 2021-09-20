@@ -21,7 +21,8 @@
 
 .cta {
 	width: 13rem;
-	height: 3.188rem;
+	padding: 0.6rem;
+	text-align: center;
 	border: none;
 	background-color: $purple_primary;
 	color: $light_primary;
@@ -30,8 +31,83 @@
 	margin-right: 2.5rem;
 	letter-spacing: 1.2px;
 	border-radius: 0.25rem;
+	display: inline-block;
 
 	&:hover {
 		background-color: $purple_dark;
+	}
+}
+
+.bars {
+	margin-right: 1.5rem;
+	display: none;
+}
+
+.backdrop {
+	display: none;
+	position: fixed;
+	inset: 0;
+	z-index: 5;
+	pointer-events: none;
+	transition: all 300ms ease;
+}
+
+.backdropOpen {
+	background-color: rgba(0, 0, 0, 0.397);
+	pointer-events: all;
+}
+
+.line {
+	width: 40px;
+	height: 3px;
+	background-color: black;
+	display: block;
+	margin-top: 0.4rem;
+	transition: all 300ms ease;
+}
+
+@media (max-width: 700px) {
+	.cta {
+		width: 100%;
+		margin: 0;
+	}
+
+	.links {
+		position: fixed;
+		display: flex;
+		flex-direction: column;
+		width: 0;
+		background-color: rgb(240, 240, 240);
+		left: 0;
+		top: 0;
+		bottom: 0;
+		z-index: 6;
+		pointer-events: none;
+		overflow: hidden;
+		transition: all 300ms ease;
+
+		a {
+			margin: 0 0 10px 0;
+		}
+	}
+
+	.linksContainer {
+		padding: 10px;
+		width: 225px;
+	}
+
+	.linksOpen {
+		width: 225px;
+		pointer-events: all;
+	}
+
+	.bars {
+		z-index: 6;
+		overflow: hidden;
+	}
+
+	.bars,
+	.backdrop {
+		display: block;
 	}
 }

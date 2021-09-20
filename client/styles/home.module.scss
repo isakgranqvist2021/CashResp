@@ -28,13 +28,6 @@
 	}
 }
 
-.bankNote {
-	animation-name: fallDown;
-	animation-timing-function: linear;
-	animation-iteration-count: infinite;
-	animation-duration: 3s;
-}
-
 .cta {
 	background-color: $purple_primary;
 	width: 22rem;
@@ -50,13 +43,128 @@
 	}
 }
 
-@keyframes fallDown {
-	0% {
-		transform: translateY(0);
-		opacity: 1;
+@media (max-width: 1830px) {
+	.svg {
+		margin-left: -5.25rem;
 	}
-	100% {
-		transform: translateY(100%);
-		opacity: 0;
+
+	.h1 {
+		font-size: 4.125rem;
+	}
+}
+
+@media (max-width: 1520px) {
+	.svg {
+		margin-left: -4.25rem;
+	}
+
+	.h1 {
+		font-size: 3.725rem;
+	}
+}
+
+@media (max-width: 1390px) {
+	.main {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.content {
+		width: 75%;
+	}
+
+	.svg {
+		max-width: 400px;
+		margin: -100px -400px 0 0;
+	}
+
+	.cta {
+		height: 4.4rem;
+	}
+}
+
+@media (max-width: 1190px) {
+	.svg {
+		max-width: 400px;
+		margin: -50px -400px 0 0;
+	}
+}
+
+@media (max-width: 1090px) {
+	.svg {
+		max-width: 400px;
+		margin: -225px -540px 0 0;
+	}
+}
+
+@media (max-width: 1035px) {
+	.content {
+		align-items: center;
+		text-align: center;
+	}
+	.svg {
+		max-width: 100%;
+		margin: 100px 0 0 0;
+	}
+}
+
+@media (max-width: 780px) {
+	.content {
+		width: 90%;
+	}
+}
+
+@media (max-width: 640px) {
+	.main {
+		padding: 8rem 3.25rem;
+	}
+	.content {
+		width: 100%;
+	}
+}
+
+@media (max-width: 530px) {
+	.main {
+		padding: 4rem 2.25rem;
+	}
+}
+
+@media (max-width: 500px) {
+	.h1 {
+		font-size: 3rem;
+	}
+
+	.cta {
+		height: 3.4rem;
+		width: 80%;
+		font-size: 1.1rem;
+	}
+}
+
+@media (max-width: 420px) {
+	.h1 {
+		font-size: 2.5rem;
+	}
+}
+
+@media (max-width: 330px) {
+	.main {
+		padding: 2rem 2.5rem;
+	}
+
+	.h1 {
+		font-size: 2rem;
+	}
+
+	.cta {
+		font-size: 1rem;
+		height: auto;
+		padding: 1rem;
+		width: 90%;
+	}
+
+	.svg {
+		width: 100%;
+		margin: 2rem 0 0 0;
 	}
 }
